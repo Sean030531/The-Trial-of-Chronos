@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/UI Game Start Page.unity
+    guid: 6d1ba8099ca514747bf4e21960ca993d
+  - enabled: 1
+    path: Assets/Scenes/UI Puzzle Selection Page.unity
+    guid: b830d5ed5d95344baaf06aa41d4ddb9d
+  - enabled: 1
+    path: Assets/Scenes/UI Settings Page.unity
+    guid: 09e9950b656b34d289cd0ddb3b1f0177
+  - enabled: 1
+    path: Assets/Scenes/UI Home Page.unity
+    guid: b55bfeff20da44621a8dd58dc9d997db
+  - enabled: 1
+    path: Assets/Scenes/Level 1 Gear Puzzle.unity
+    guid: 8fa111ff54b20458da5ac2f98835e2f0
+  - enabled: 1
+    path: Assets/Scenes/Old Level 1 Gear Puzzle.unity
+    guid: cb83bb7986d4f4093a879a92a4efda91
+  - enabled: 1
+    path: Assets/Scenes/Level 1 Platform Movement Puzzle.unity
+    guid: edd0436662de44cde84b27c47bc979fc
+  - enabled: 1
+    path: Assets/Scenes/Level 1 Rolling Balls Puzzle.unity
+    guid: cb9ba1663ab3a42de82df194127a9698
+  - enabled: 1
+    path: Assets/Scenes/Level 1 Timed Door Puzzle.unity
+    guid: 3e1bf7096f7284388ab1f2eea7cbbc06
+  - enabled: 1
+    path: Assets/Scenes/Level 2 Elevator Puzzle.unity
+    guid: f59fc87187c7443348b5590d6903b926
+  - enabled: 1
+    path: Assets/Scenes/Level 2 Mural Puzzle.unity
+    guid: 2b7091e1550614363a6d9e12b6f36051
+  - enabled: 1
+    path: Assets/Scenes/UI Game Complete Page.unity
+    guid: f1482234731cc430f87e6d8394429d09
+  m_configObjects: {}
