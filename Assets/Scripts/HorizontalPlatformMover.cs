@@ -19,7 +19,7 @@ public class HorizontalPlatformMover : MonoBehaviour
     void Update()
     {
         // Calculate new Z position
-        float newZ = startPosition.z + Mathf.Sin(Time.time * moveSpeed) * moveDistance;
+        float newZ = startPosition.z - Mathf.Sin(Time.time * moveSpeed) * moveDistance;
 
         // Apply the new position
         transform.position = new Vector3(startPosition.x, startPosition.y, newZ);

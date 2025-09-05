@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class MuralExplosion : MonoBehaviour
 {
-    private Vector3 force; // The force of the explosion
-    private ForceMode forceMode = ForceMode.Impulse; // Impulse force Mode
-    private Rigidbody rb; // Mural piece
+    // The force and radius of the explosion
+    private float explosionForce = 70f;
+    private float explosionRadius = 12f;
 
-    // Start is called before the first frame update
+    // The mural pieces' Rigidbodies
+    private Rigidbody[] muralPieces;
+
     void Start()
     {
-        // Cached mural piece
-        rb = GetComponent<Rigidbody>();
+        // Get all Rigidbody components from the children of this object
+        muralPieces = GetComponentsInChildren<Rigidbody>();
 
-        // Randomize explode direction
-        float forceX  = Random.Range(-5f, 5f);
-        float forceY  = Random.Range(-5f, 5f);
-        float forceZ  = Random.Range(5f, 10f);
-        force = new Vector3(forceX, forceY, forceZ);
+        // Explode
+        ExplodeMural();
+    }
 
-        // Add force to mural piece
-        rb.AddForce(force, forceMode);
+    public void ExplodeMural()
+    {
+        // The central position of the explosion
+        Vector3 explosionPosition = transform.position;
+
+        // Loop through all mural pieces and add the explosion force
+        foreach (Rigidbody rb in muralPieces)
+        {
+            if (rb != null)
+            {
+                rb.AddExplosionForce(-explosionForce, explosionPosition, explosionRadius, 1f, ForceMode.Impulse);
+            }
+        }
     }
 }

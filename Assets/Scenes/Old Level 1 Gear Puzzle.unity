@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 528363c5c1cf6a7458140c6851c77b68, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -97,7 +97,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 0eb88e92ad5fb414da0d025fb8c40029, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3152,8 +3152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1935057590}
-  minCameraHeight: 1
-  collisionBuffer: 0.2
 --- !u!81 &435388175
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13572,9 +13570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bbdb0b144cf4d149e44a44569b558c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
   cameraTransform: {fileID: 435388173}
-  respawnPoint: {fileID: 1935057590}
 --- !u!4 &1935057590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b6acd0a3e9fe44a9c8fa3cc991207ca9, type: 3}
@@ -13592,10 +13588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27713941c69204302a8e3b94c2c93af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1935057590}
   cloneMarkerPrefab: {fileID: 1794257593982384750, guid: 5d7bbbd3c8e0541338de13fbd32ba2e1, type: 3}
   flameEffectPrefab: {fileID: 3533655513965884329, guid: bce161813407b494e8f0f03af4449736, type: 3}
-  flameLocalOffset: {x: 0, y: 1, z: 0}
   cloneIconUI: {fileID: 2005629922}
   cloneSprite: {fileID: 21300000, guid: 7b1a9ba1a8c324367a8e1439474a4573, type: 3}
   teleportSprite: {fileID: 21300000, guid: 7a7bae69110e247f88ef0234d1fdba75, type: 3}

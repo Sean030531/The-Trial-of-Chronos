@@ -15,6 +15,7 @@ TagManager:
   - Ball
   - CorrectBox
   - Coin
+  - NoStunZone
   layers:
   - Default
   - TransparentFX

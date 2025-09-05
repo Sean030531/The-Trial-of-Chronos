@@ -99,6 +99,7 @@ public class RewindableObject : MonoBehaviour
         // Set flags to indicate the start of the rewind process
         isRewinding = true;
         IsRewindFinished = false;
+        SetGlowInternal(true);
 
         rb.isKinematic = true; // Disable physics during rewind
 
@@ -114,13 +115,14 @@ public class RewindableObject : MonoBehaviour
         rb.isKinematic = false;
         isRewinding = false;
         IsRewindFinished = true;
+        SetGlowInternal(false);
 
         // Clear the state history to prepare for a new recording session
         states.Clear();
     }
 
-    // Applies or removes a glow effect to the object's materials
-    public void SetGlow(bool on)
+    // A private method for setting the glow internally, bypassing the external check
+    private void SetGlowInternal(bool on)
     {
         // Iterate through all stored renderers and their original emission colors
         foreach (var kv in originalEmissions)
@@ -140,5 +142,17 @@ public class RewindableObject : MonoBehaviour
                 mat.SetColor(EmCol, orig);
             }
         }
+    }
+
+    public void SetGlow(bool on)
+    {
+        if (isRewinding)
+        {
+            // If the mural is currently rewinding, ignore external glow commands
+            return;
+        }
+
+        // Apply the glow based on the external command
+        SetGlowInternal(on);
     }
 }

@@ -62,10 +62,6 @@ public class RecallMechanic : MonoBehaviour
         // When left-click is pressed, shoot a ray
         if (isVisible && !isRewinding && Input.GetMouseButtonDown(0))
         {
-            // Prevents the raycast from hitting the player
-            int playerLayer = LayerMask.NameToLayer("Player");
-            int mask = ~(1 << playerLayer);
-
             // Convert mouse position to a viewport point 
             Vector3 viewportPoint = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
@@ -74,7 +70,7 @@ public class RecallMechanic : MonoBehaviour
             RaycastHit hit;
 
             // Perform the raycast
-            if (Physics.Raycast(ray, out hit, 100f, mask))
+            if (Physics.Raycast(ray, out hit, 100f))
             {
                 // Try to get a RewindableObject component from the hit collider or its parents
                 var rewindObj = hit.collider.GetComponentInParent<RewindableObject>();
@@ -105,7 +101,7 @@ public class RecallMechanic : MonoBehaviour
         SetPlayerFade(isVisible);
 
         // Apply RewindableObject glow effect
-        GlowRewindableObject(isVisible || isRewinding);
+        GlowRewindableObject(isVisible);
     }
     
     IEnumerator HandleRewind(RewindableObject rewindScript)

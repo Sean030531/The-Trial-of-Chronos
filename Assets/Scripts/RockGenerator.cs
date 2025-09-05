@@ -19,13 +19,6 @@ public class RockGenerator : MonoBehaviour
         StartCoroutine(GenerateLoop());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Comtrol each rocks status
-        RockStatusControl();
-    }
-
     private IEnumerator GenerateLoop()
     {
         // Repeat forever
@@ -79,34 +72,5 @@ public class RockGenerator : MonoBehaviour
             if (ro && !ro.IsRewindFinished) return true;
         }
         return false;
-    }
-
-    private void RockStatusControl()
-    {
-        foreach (var go in generatedRocks)
-        {
-            // Skip any null entries
-            if (!go) continue;
-
-            // Find the true center
-            Renderer rend = go.GetComponentInChildren<Renderer>();
-            float y = rend.bounds.center.y;  
-
-            // Destroy if rock fell of world
-            if (y < -20f)
-            {
-                Destroy(go);
-            }
-
-            // If rock is on upper platform, change it tag to Untagged, avoid stunning player
-            if (y > 16f)
-            {
-                go.tag = "Untagged";
-            }
-            else
-            {
-                go.tag = "Rock";
-            }
-        }
     }
 }

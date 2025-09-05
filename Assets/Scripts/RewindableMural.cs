@@ -88,6 +88,7 @@ public class RewindableMural : MonoBehaviour
     {
         isRewinding = true;
         IsRewindFinished = false;
+        SetGlowInternal(true);
 
         // Rewind phase, iterate through the recorded states in reverse (end to start)
         for (int i = states.Count - 1; i >= 0; i--)
@@ -98,6 +99,7 @@ public class RewindableMural : MonoBehaviour
         }
 
         // Wait for 5 second at the end of the rewind
+        SetGlowInternal(false);
         yield return new WaitForSeconds(5f);
 
         // Playback phase, iterate through the recorded states forward (start to end)
@@ -113,8 +115,8 @@ public class RewindableMural : MonoBehaviour
         IsRewindFinished  = true;
     }
 
-    // Applies or removes a glow effect to the object's materials
-    public void SetGlow(bool on)
+    // A private method for setting the glow internally, bypassing the external check
+    private void SetGlowInternal(bool on)
     {
         // Iterate through all stored renderers and their original emission colors
         foreach (var kv in originalEmissions)
@@ -134,5 +136,17 @@ public class RewindableMural : MonoBehaviour
                 mat.SetColor(EmCol, orig);
             }
         }
+    }
+
+    public void SetGlow(bool on)
+    {
+        if (isRewinding)
+        {
+            // If the mural is currently rewinding, ignore external glow commands
+            return;
+        }
+
+        // Apply the glow based on the external command
+        SetGlowInternal(on);
     }
 }

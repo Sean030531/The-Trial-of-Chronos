@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f58f9ed95857747a888310e430da6833, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 57.5
+      value: -57.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f58f9ed95857747a888310e430da6833, type: 3}
       propertyPath: m_LocalRotation.w
@@ -85,6 +85,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f58f9ed95857747a888310e430da6833, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3589683674477485937}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f58f9ed95857747a888310e430da6833, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1292180520413826557}
   m_SourcePrefab: {fileID: 100100000, guid: f58f9ed95857747a888310e430da6833, type: 3}
 --- !u!1 &2125934140211208141 stripped
 GameObject:
@@ -137,8 +140,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.25
-  m_Center: {x: -1.08551e-15, y: 0.20369597, z: 0}
+  m_Radius: 0.2336493
+  m_Center: {x: -0.000000047683717, y: 0.20369607, z: 0}
 --- !u!114 &3589683674477485937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,4 +154,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4f3947346384c90b69aa687375e964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0, g: 0, b: 1, a: 1}
+  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
+--- !u!114 &1292180520413826557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125934140211208141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe261ecc2a51d41ce950fe7a524c886a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
