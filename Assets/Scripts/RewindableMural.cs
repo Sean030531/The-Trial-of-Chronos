@@ -29,7 +29,7 @@ public class RewindableMural : MonoBehaviour
     // A public property that allows other scripts to check if the rewind process has finished
     public bool IsRewindFinished { get; private set; } = true;
 
-    public Color glowColor = Color.blue; // Glow effect color
+    private Color glowColor; // Glow effect color
 
     // Dictionary to store the original emission colors of all renderers
     private Dictionary<Renderer, Color> originalEmissions = new Dictionary<Renderer, Color>();
@@ -39,6 +39,9 @@ public class RewindableMural : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Convert the hex string to a Color object
+        ColorUtility.TryParseHtmlString("#E79963", out glowColor);
+        
         // Cache renderer components from this object and its children
         var renderers = GetComponentsInChildren<Renderer>();
         foreach (var rend in renderers)

@@ -6603,7 +6603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4f3947346384c90b69aa687375e964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0, g: 0, b: 1, a: 1}
+  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &737573075
 Rigidbody:
   m_ObjectHideFlags: 0
