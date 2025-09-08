@@ -6603,7 +6603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4f3947346384c90b69aa687375e964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &737573075
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6612,7 +6611,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737573072}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -18160,6 +18159,7 @@ MonoBehaviour:
   keyHintIcon: {fileID: 101687487}
   rightClickSprite: {fileID: 21300000, guid: 2067d8b29345e4a3390061c4b1803a68, type: 3}
   leftClickSprite: {fileID: 21300000, guid: 4994a996f79b84d03900ebe2ab0147cd, type: 3}
+  rewindStartSound: {fileID: 0}
 --- !u!54 &1935057594
 Rigidbody:
   m_ObjectHideFlags: 0

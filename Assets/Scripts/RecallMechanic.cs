@@ -23,6 +23,9 @@ public class RecallMechanic : MonoBehaviour
     private struct MatInfo { public Material mat; public Material original; }
     private List<MatInfo> mats;
 
+    public AudioClip rewindStartSound; // The sound effect to play
+    private AudioSource audioSource; // Reference to the AudioSource component
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +44,14 @@ public class RecallMechanic : MonoBehaviour
                 // Cache a reference to the current material
                 mats.Add(new MatInfo { mat = mat, original = new Material(mat) });
             }
+        }
+
+        // Get the AudioSource component on this GameObject
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            // Log an error if the AudioSource is not found
+            Debug.LogError("RecallMechanic requires an AudioSource component on the same GameObject to play sounds.", this);
         }
     }
 
@@ -76,6 +87,12 @@ public class RecallMechanic : MonoBehaviour
                 var rewindObj = hit.collider.GetComponentInParent<RewindableObject>();
                 if (rewindObj != null)
                 {
+                    // Play the sound effect
+                    if (audioSource != null && rewindStartSound != null)
+                    {
+                        audioSource.PlayOneShot(rewindStartSound);
+                    }
+
                     // If rewindable object is found, start rewind
                     isRewinding = true;
                     StartCoroutine(HandleRewind(rewindObj));
@@ -83,6 +100,12 @@ public class RecallMechanic : MonoBehaviour
                 // If it's not RewindableObject, check if it's a RewindableMural
                 else if (hit.collider.GetComponentInParent<RewindableMural>() is RewindableMural piece)
                 {
+                    // Play the sound effect
+                    if (audioSource != null && rewindStartSound != null)
+                    {
+                        audioSource.PlayOneShot(rewindStartSound);
+                    }
+
                     // If a mural piece is hit, rewind all pieces of mural
                     isRewinding = true;
 
@@ -109,6 +132,13 @@ public class RecallMechanic : MonoBehaviour
         // Start rewind
         rewindScript.StartRewind();
         yield return new WaitUntil(() => rewindScript.IsRewindFinished); // Wait for rewind to complete
+        
+        // Stop the sound effect
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+        }
+        
         isRewinding = false;
     }
 
@@ -128,6 +158,12 @@ public class RecallMechanic : MonoBehaviour
             }
             return true;
         });
+
+        // Stop the sound effect
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+        }
 
         isRewinding = false;
     }

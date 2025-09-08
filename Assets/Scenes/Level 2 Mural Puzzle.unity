@@ -5167,7 +5167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a4051be01341d4a9bc276163f0c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &267226719
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5901,7 +5900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a4051be01341d4a9bc276163f0c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &296418031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6734,7 +6732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a4051be01341d4a9bc276163f0c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &340152655
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13520,7 +13517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a4051be01341d4a9bc276163f0c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &603488598
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20265,7 +20261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a4051be01341d4a9bc276163f0c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &927414002
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22134,7 +22129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a4051be01341d4a9bc276163f0c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &1003796415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22283,7 +22277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a4051be01341d4a9bc276163f0c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &1007447957
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23838,7 +23831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a4051be01341d4a9bc276163f0c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &1050131720
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26737,7 +26729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a4051be01341d4a9bc276163f0c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &1192033201
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31406,7 +31397,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.5
   m_Range: 15
   m_SpotAngle: 50
   m_InnerSpotAngle: 5
@@ -39504,7 +39495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a4051be01341d4a9bc276163f0c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowColor: {r: 0.90588236, g: 0.6, b: 0.3882353, a: 1}
 --- !u!54 &1859810309
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40577,6 +40567,7 @@ MonoBehaviour:
   keyHintIcon: {fileID: 496140984}
   rightClickSprite: {fileID: 21300000, guid: 2067d8b29345e4a3390061c4b1803a68, type: 3}
   leftClickSprite: {fileID: 21300000, guid: 4994a996f79b84d03900ebe2ab0147cd, type: 3}
+  rewindStartSound: {fileID: 0}
 --- !u!54 &1935057594
 Rigidbody:
   m_ObjectHideFlags: 0
