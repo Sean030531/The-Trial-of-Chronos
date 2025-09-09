@@ -10,7 +10,7 @@ public class RecallMechanic : MonoBehaviour
     public GameObject crosshairUI; // UI crosshair object to toggle
     public Image recallIconUI; // Icon that switches between sprites
     public Sprite crosshairSprite; // Default icon sprite
-    public Sprite timeSandSprite; // Sprite shown during recall
+    public Sprite clockSprite; // Sprite shown during recall
   
     public Image keyHintIcon; // Key hint icon that switches between sprites
     public Sprite rightClickSprite; // Default key hint icon sprite    
@@ -23,7 +23,8 @@ public class RecallMechanic : MonoBehaviour
     private struct MatInfo { public Material mat; public Material original; }
     private List<MatInfo> mats;
 
-    public AudioClip rewindStartSound; // The sound effect to play
+    public AudioClip rewindSound; // Rewind sound effect
+    public AudioClip rewindFalseSound; // Flase Rewind sound effect
     private AudioSource audioSource; // Reference to the AudioSource component
 
 
@@ -48,11 +49,7 @@ public class RecallMechanic : MonoBehaviour
 
         // Get the AudioSource component on this GameObject
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            // Log an error if the AudioSource is not found
-            Debug.LogError("RecallMechanic requires an AudioSource component on the same GameObject to play sounds.", this);
-        }
+        audioSource.outputAudioMixerGroup = SoundMixerManager.Instance.soundEffectGroup;
     }
 
     // Update is called once per frame
@@ -66,7 +63,7 @@ public class RecallMechanic : MonoBehaviour
             // Change based on isVisible
             crosshairUI.SetActive(isVisible);
 
-            recallIconUI.sprite = isVisible ? timeSandSprite : crosshairSprite;
+            recallIconUI.sprite = isVisible ? clockSprite : crosshairSprite;
             keyHintIcon.sprite = isVisible ? leftClickSprite : rightClickSprite;
         }
 
@@ -88,10 +85,8 @@ public class RecallMechanic : MonoBehaviour
                 if (rewindObj != null)
                 {
                     // Play the sound effect
-                    if (audioSource != null && rewindStartSound != null)
-                    {
-                        audioSource.PlayOneShot(rewindStartSound);
-                    }
+                    audioSource.clip = rewindSound;
+                    audioSource.Play();
 
                     // If rewindable object is found, start rewind
                     isRewinding = true;
@@ -101,10 +96,8 @@ public class RecallMechanic : MonoBehaviour
                 else if (hit.collider.GetComponentInParent<RewindableMural>() is RewindableMural piece)
                 {
                     // Play the sound effect
-                    if (audioSource != null && rewindStartSound != null)
-                    {
-                        audioSource.PlayOneShot(rewindStartSound);
-                    }
+                    audioSource.clip = rewindSound;
+                    audioSource.Play();
 
                     // If a mural piece is hit, rewind all pieces of mural
                     isRewinding = true;
@@ -113,6 +106,11 @@ public class RecallMechanic : MonoBehaviour
                     var parent = piece.transform.parent;
                     var allPieces = parent.GetComponentsInChildren<RewindableMural>();
                     StartCoroutine(HandleRewindMural(allPieces));
+                }
+                else
+                {
+                    // Play the sound effect
+                    audioSource.PlayOneShot(rewindFalseSound);
                 }
             }
 
@@ -134,10 +132,7 @@ public class RecallMechanic : MonoBehaviour
         yield return new WaitUntil(() => rewindScript.IsRewindFinished); // Wait for rewind to complete
         
         // Stop the sound effect
-        if (audioSource != null)
-        {
-            audioSource.Stop();
-        }
+        audioSource.Stop();
         
         isRewinding = false;
     }
@@ -160,10 +155,7 @@ public class RecallMechanic : MonoBehaviour
         });
 
         // Stop the sound effect
-        if (audioSource != null)
-        {
-            audioSource.Stop();
-        }
+        audioSource.Stop();
 
         isRewinding = false;
     }

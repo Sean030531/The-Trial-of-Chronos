@@ -23,11 +23,19 @@ public class CloneMechanic : MonoBehaviour
 
     private GameObject currentMarkerInstance; // Instance of the visual clone marker
 
+    public AudioClip cloneSound; // Clone sound effect
+    public AudioClip teleportSound; // Teleport sound effect
+    private AudioSource audioSource; // Reference to the AudioSource component
+
     // Start is called before the first frame update
     void Start()
     {
         // Cached player rigid body
         rb = GetComponent<Rigidbody>();
+
+        // Get the AudioSource component on this GameObject
+        audioSource = GetComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = SoundMixerManager.Instance.soundEffectGroup;
     }
 
     // Update is called once per frame
@@ -52,6 +60,8 @@ public class CloneMechanic : MonoBehaviour
         savedPosition = transform.position;
         savedRotation = transform.rotation;
         hasClonePoint = true;
+
+        audioSource.PlayOneShot(cloneSound);
 
         // Replace any existing marker
         if (currentMarkerInstance != null)
@@ -89,6 +99,8 @@ public class CloneMechanic : MonoBehaviour
         {
             Destroy(currentMarkerInstance);
         }
+
+        audioSource.PlayOneShot(teleportSound);
 
         hasClonePoint = false;
 

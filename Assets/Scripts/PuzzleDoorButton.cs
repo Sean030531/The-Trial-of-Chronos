@@ -8,10 +8,17 @@ public class PuzzleDoorButton : MonoBehaviour
     private Animator buttonAnimator; // Button animator
     private bool isClicked = false; // Check if clicked
 
+    public AudioClip toggleSound; // Toggle sound effect
+    private AudioSource audioSource; // Reference to the AudioSource component
+
     // Start is called before the first frame update
     void Start()
     {
         buttonAnimator = GetComponent<Animator>(); // Cached button animator
+
+        // Get the AudioSource component on this GameObject
+        audioSource = GetComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = SoundMixerManager.Instance.soundEffectGroup;
     }
 
     void OnMouseDown()
@@ -20,6 +27,8 @@ public class PuzzleDoorButton : MonoBehaviour
         {
             buttonAnimator.SetBool("isClicked", true);  // Perform button toggle on animation
             isClicked = true;
+
+            audioSource.PlayOneShot(toggleSound);
         }
         else // Release back
         {

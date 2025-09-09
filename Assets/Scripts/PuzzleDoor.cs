@@ -11,10 +11,18 @@ public class PuzzleDoor : MonoBehaviour
 
     private List<string> inputSequence = new List<string>(3); // Input Sequence 
 
+    public AudioClip openDoorSound; // Open door sound effect
+    public AudioClip falseSound; // False sound effect
+    private AudioSource audioSource; // Reference to the AudioSource component
+
     // Start is called before the first frame update
     void Start()
     {
         doorAnimator = GetComponent<Animator>(); // Cache dooranimator
+
+        // Get the AudioSource component on this GameObject
+        audioSource = GetComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = SoundMixerManager.Instance.soundEffectGroup;
 
         // If no instance of SymbolDoorManager exists, set this as the instance
         if (Instance == null)
@@ -58,6 +66,7 @@ public class PuzzleDoor : MonoBehaviour
         // If the sequences match, open the door
         if (isMatch)
         {
+            audioSource.PlayOneShot(openDoorSound);
             doorAnimator.SetTrigger("OpenDoor"); // Perform open door animation
         }
         else
@@ -71,6 +80,7 @@ public class PuzzleDoor : MonoBehaviour
         // A short delay for animation
         yield return new WaitForSeconds(0.5f);
 
+        audioSource.PlayOneShot(falseSound);
 
         foreach (string pressedID in inputSequence)
         {

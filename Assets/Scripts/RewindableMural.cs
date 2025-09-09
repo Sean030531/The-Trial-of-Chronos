@@ -36,6 +36,9 @@ public class RewindableMural : MonoBehaviour
     // Shader property ID for efficiency
     private static readonly int EmCol = Shader.PropertyToID("_EmissionColor");
 
+    public AudioClip explosionSound; // Explosion sound effect
+    private AudioSource audioSource; // Reference to the AudioSource component
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +56,10 @@ public class RewindableMural : MonoBehaviour
                 originalEmissions[rend] = mat.GetColor(EmCol);
             }
         }
+
+        // Get the AudioSource component on this GameObject
+        audioSource = GetComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = SoundMixerManager.Instance.soundEffectGroup;
 
         rb = GetComponent<Rigidbody>(); // Cache the rigid body
 
@@ -104,6 +111,10 @@ public class RewindableMural : MonoBehaviour
         // Wait for 5 second at the end of the rewind
         SetGlowInternal(false);
         yield return new WaitForSeconds(5f);
+        if (audioSource != null && explosionSound != null)
+        {
+            audioSource.PlayOneShot(explosionSound);
+        }
 
         // Playback phase, iterate through the recorded states forward (start to end)
         for (int i = 0; i < states.Count; i++)

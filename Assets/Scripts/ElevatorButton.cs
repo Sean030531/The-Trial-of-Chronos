@@ -10,9 +10,13 @@ public class ElevatorButton : MonoBehaviour
     private float levitateHeight = 10f;                
     private float levitateSpeed  = 2f;                          
 
-    private Vector3   elevatorStartPos;
+    private Vector3 elevatorStartPos;
     private Rigidbody rb;
     private bool elevatorBusy;
+
+    public AudioClip levitateSound; // Levitate sound effect
+    public AudioClip thumpSound; // Thump sound effect
+    private AudioSource audioSource; // Reference to the AudioSource component
 
     void Start()
     {
@@ -22,6 +26,10 @@ public class ElevatorButton : MonoBehaviour
         // Cache elevator rigid body and start position
         rb = elevator.GetComponent<Rigidbody>();
         elevatorStartPos = elevator.transform.position;
+
+        // Get the AudioSource component on this GameObject
+        audioSource = GetComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = SoundMixerManager.Instance.soundEffectGroup;
     }
 
     void OnMouseDown()
@@ -29,6 +37,7 @@ public class ElevatorButton : MonoBehaviour
         // After clicked on button, if elevator is not busy, start it
         if (!elevatorBusy)
         {
+            audioSource.PlayOneShot(levitateSound);
             StartCoroutine(DriveElevator());
         }
     }
@@ -60,6 +69,8 @@ public class ElevatorButton : MonoBehaviour
         {
             yield return null;
         }
+
+        audioSource.PlayOneShot(thumpSound);
 
         elevatorBusy = false;
     }

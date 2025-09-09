@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 using UnityEngine.Audio;
 
-public class MusicVolController : MonoBehaviour
+public class SoundEffectVolController : MonoBehaviour
 {
     private Slider slider; // Control slider
 
@@ -19,7 +19,7 @@ public class MusicVolController : MonoBehaviour
         {
             float currentVolumeDb;
             // Get the current volume from the mixer
-            SoundMixerManager.Instance.audioMixer.GetFloat("MusicVolume", out currentVolumeDb);
+            SoundMixerManager.Instance.audioMixer.GetFloat("SoundEffectVolume", out currentVolumeDb);
             // Convert dB back to a linear value for the slider (0-1)
             slider.value = Mathf.Pow(10, currentVolumeDb / 20f);
         }
@@ -39,6 +39,6 @@ public class MusicVolController : MonoBehaviour
 
     private void OnSliderValueChanged(float value)
     {
-        SoundMixerManager.Instance.SetMusicVolume(value); // Update volume
+        SoundMixerManager.Instance.SetSoundEffectVolume(value); // Update volume
     }
 }

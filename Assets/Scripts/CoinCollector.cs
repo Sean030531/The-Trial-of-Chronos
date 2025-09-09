@@ -17,6 +17,12 @@ public class CoinCollector : MonoBehaviour
     private int collectedCount = 0; 
     private bool isCorrectBox = false;
 
+    private bool isDoorOpend = false;
+
+    public AudioClip coinSound; // Coin sound effect
+    public AudioClip doorOpenSound; // Door open sound effect
+    private AudioSource audioSource; // Reference to the AudioSource component
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +34,10 @@ public class CoinCollector : MonoBehaviour
         {
             countdownText.text = requiredCount.ToString();
         }
+
+        // Get the AudioSource component on this GameObject
+        audioSource = GetComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = SoundMixerManager.Instance.soundEffectGroup;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,6 +45,7 @@ public class CoinCollector : MonoBehaviour
         // Early exit if the object is not a coin
         if (!other.CompareTag(coinTag)) return;
 
+        audioSource.PlayOneShot(coinSound);
         collectedCount++;
         Destroy(other.gameObject);
 
@@ -46,7 +57,7 @@ public class CoinCollector : MonoBehaviour
         }
 
         // Open door when this is the correct box and enough balls are collected
-        if (isCorrectBox && collectedCount >= requiredCount)
+        if (isCorrectBox && collectedCount >= requiredCount && !isDoorOpend)
         {
             OpenDoor();
         }
@@ -57,7 +68,10 @@ public class CoinCollector : MonoBehaviour
     {
         if (doorAnimator) 
         {
+            audioSource.PlayOneShot(doorOpenSound);
             doorAnimator.SetTrigger("OpenDoor");
         }
+
+        isDoorOpend = true;
     }
 }
