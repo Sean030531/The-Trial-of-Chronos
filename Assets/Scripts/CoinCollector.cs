@@ -45,7 +45,11 @@ public class CoinCollector : MonoBehaviour
         // Early exit if the object is not a coin
         if (!other.CompareTag(coinTag)) return;
 
-        audioSource.PlayOneShot(coinSound);
+        if (audioSource != null && coinSound != null)
+        {
+            audioSource.PlayOneShot(coinSound);
+        }
+        
         collectedCount++;
         Destroy(other.gameObject);
 

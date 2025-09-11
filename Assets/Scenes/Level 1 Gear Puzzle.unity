@@ -7146,7 +7146,7 @@ MonoBehaviour:
   box: {fileID: 1801749873}
   doorAnimator: {fileID: 1641438549}
   countdownText: {fileID: 0}
-  coinSound: {fileID: 8300000, guid: fe01d2712d0e44a52b7ca3e77a3ef8f2, type: 3}
+  coinSound: {fileID: 0}
   doorOpenSound: {fileID: 8300000, guid: b3d21ff2283284dcb85a0a3a5708cd4c, type: 3}
 --- !u!82 &903776733
 AudioSource:
