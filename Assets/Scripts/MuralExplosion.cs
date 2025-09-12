@@ -5,7 +5,7 @@ using UnityEngine;
 public class MuralExplosion : MonoBehaviour
 {
     // The force and radius of the explosion
-    private float explosionForce = 70f;
+    private float explosionForce = 60f;
     private float explosionRadius = 12f;
 
     // The mural pieces' Rigidbodies
