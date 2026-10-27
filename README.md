@@ -53,10 +53,12 @@ All gameplay scripts are in [`Assets/Scripts`](Assets/Scripts), about 1,900 line
 
 Unity **2022.3.54f1** (LTS). Open the project folder and start from `Assets/Scenes/UI Home Page.unity`. The browser build is in `docs/`.
 
+The skybox comes from *Skybox Cubemap Extended* by BOXOPHOBIC on the Unity Asset Store. Asset Store content cannot be redistributed, so it is not included here: import it from the Asset Store (into `Assets/BOXOPHOBIC`), or the six level scenes will open with a missing skybox. The browser build in `docs/` already includes it.
+
 ## Credits
 
 - Characters, environment and UI assets: [Kenney](https://kenney.nl) (CC0)
-- Skybox: *Skybox Cubemap Extended* by BOXOPHOBIC (Unity Asset Store)
+- Skybox: *Skybox Cubemap Extended* by BOXOPHOBIC (Unity Asset Store), not included in this repository
 
 ## Context
 

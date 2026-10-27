@@ -78,3 +78,7 @@ crashlytics-build.properties
 .DS_Store
 mono_crash*
 *.zip
+
+# Asset Store content (not redistributable)
+/[Aa]ssets/BOXOPHOBIC/
+/[Aa]ssets/BOXOPHOBIC.meta
